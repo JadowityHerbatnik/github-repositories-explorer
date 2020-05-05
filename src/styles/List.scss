@@ -1,0 +1,17 @@
+ul.users-list {
+  list-style-type: none;
+  padding: 0;
+  & li {
+    color: black;
+    background-color: $lightgrey;
+    width: 100%;
+    margin: 5px 0 5px 0;
+  }
+}
+ul.repos-list {
+  list-style: none;
+  & li {
+    background-color: $darkgrey;
+    margin: 5px 0 5px 0;
+  }
+}

@@ -1,0 +1,11 @@
+input {
+  width: 100%;
+}
+.btn {
+  color: white;
+  border: none;
+  &#search-btn {
+    background-color: $blue;
+    width: 100%;
+  }
+}

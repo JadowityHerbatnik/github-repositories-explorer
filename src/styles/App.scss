@@ -1,0 +1,24 @@
+@import "colors";
+@import "Form";
+@import "List";
+@media (prefers-reduced-motion: no-preference) {
+}
+
+#app-wrapper {
+  color: white;
+  background-color: #222;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: calc(10px + 2vmin);
+}
+#container {
+  width: 90vw;
+  @media (orientation: landscape) {
+    width: 400px;
+  }
+
+  border: 1px solid yellow;
+}
