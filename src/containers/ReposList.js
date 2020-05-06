@@ -3,19 +3,14 @@ import { isEmpty } from "lodash";
 import { connect } from "react-redux";
 import { NoReposMessage } from "utils/messages";
 
-const ReposList = ({ repos, username }) => {
+const StarsCount = ({ stars }) => {
   return (
-    <>
-      {isEmpty(repos[username]) && <NoReposMessage />}
-      <ul className={`repos-list`}>
-        {repos[username].map((repo) => (
-          <ReposListItem key={repo.id} repo={repo} />
-        ))}
-      </ul>
-    </>
+    <p>
+      <strong>{stars}</strong>
+      <i className="icon-star"></i>
+    </p>
   );
 };
-
 const ReposListItem = ({ repo }) => {
   return (
     <li>
@@ -27,13 +22,16 @@ const ReposListItem = ({ repo }) => {
     </li>
   );
 };
-
-const StarsCount = ({ stars }) => {
+const ReposList = ({ repos, username }) => {
   return (
-    <p>
-      <strong>{stars}</strong>
-      <i className="icon-star"></i>
-    </p>
+    <>
+      {isEmpty(repos[username]) && <NoReposMessage />}
+      <ul className={`repos-list`}>
+        {repos[username].map((repo) => (
+          <ReposListItem key={repo.id} repo={repo} />
+        ))}
+      </ul>
+    </>
   );
 };
 

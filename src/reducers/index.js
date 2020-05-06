@@ -2,11 +2,11 @@ import { combineReducers } from "redux";
 import { users } from "./users";
 import { query } from "./query";
 import { repos } from "./repos";
-import { status } from "./status";
+import { fetchStatus } from "./fetchStatus";
 
 export default combineReducers({
   users,
   query,
   repos,
-  status,
+  fetchStatus,
 });

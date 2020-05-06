@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
-import { setUsers, setQuery } from "actions";
-import { fetchUsersRepos } from "helpers/fetchUsers";
+import { defaultPlaceholder } from "utils/constants";
 
-const SearchForm = ({ setQuery, fetchUsersRepos }) => {
+const SearchForm = ({ setQuery, fetchData }) => {
   const [value, setValue] = useState("");
   const handleChange = (e) => setValue(e.target.value);
   const handleSubmit = (e) => {
     setQuery(value);
-    fetchUsersRepos(value);
+    fetchData(value);
     e.preventDefault();
   };
 
@@ -21,7 +19,7 @@ const SearchForm = ({ setQuery, fetchUsersRepos }) => {
           id="user"
           value={value}
           onChange={handleChange}
-          placeholder="Enter user name"
+          placeholder={defaultPlaceholder}
         />
         <button onClick={handleSubmit} className="btn" id="search-btn">
           Search
@@ -30,7 +28,5 @@ const SearchForm = ({ setQuery, fetchUsersRepos }) => {
     </>
   );
 };
-const mapStateToProps = (state) => ({ users: state.users });
-const mapDispatchToProps = { setUsers, setQuery, fetchUsersRepos };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchForm);
+export default SearchForm;

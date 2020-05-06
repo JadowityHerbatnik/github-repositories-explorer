@@ -1,24 +1,18 @@
 import React from "react";
-import { connect } from "react-redux";
-import UsersList from "components/UsersList";
 import { ErrorMessage, LoadingMessage, InfoMessage } from "utils/messages";
 
-const SearchResults = ({ status, query }) => {
+const SearchResults = ({ fetchStatus, query, children }) => {
   return (
     <>
-      {status.loading && <LoadingMessage />}
-      {status.error && <ErrorMessage />}
-      {status.success && (
+      {fetchStatus.loading && <LoadingMessage />}
+      {fetchStatus.error && <ErrorMessage />}
+      {fetchStatus.success && (
         <>
           <InfoMessage query={query} />
-          <UsersList />
+          {children}
         </>
       )}
     </>
   );
 };
-const mapStateToProps = (state) => ({
-  status: state.status,
-  query: state.query,
-});
-export default connect(mapStateToProps)(SearchResults);
+export default SearchResults;
