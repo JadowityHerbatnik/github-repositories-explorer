@@ -1,11 +1,5 @@
-import {
-  SET_USERS,
-  SET_QUERY,
-  SET_REPOS,
-  FETCH_ERROR,
-  FETCH_SUCCESS,
-  FETCH_IN_PROGRESS,
-} from "actions/types";
+//prettier-ignore
+import { SET_USERS, SET_QUERY, SET_REPOS, FETCH_ERROR, FETCH_SUCCESS, FETCH_IN_PROGRESS } from "actions/types";
 
 export const setUsers = (users) => ({
   type: SET_USERS,

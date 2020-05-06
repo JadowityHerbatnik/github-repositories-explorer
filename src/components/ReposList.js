@@ -1,12 +1,12 @@
 import React from "react";
 import { isEmpty } from "lodash";
 import { connect } from "react-redux";
-import { noReposMessage } from "utils/messages";
+import { NoReposMessage } from "utils/messages";
 
-const renderStarsCount = (number) => {
+const StarsCount = ({ stars }) => {
   return (
     <p>
-      <span>{number}</span>
+      <strong>{stars}</strong>
       <i className="icon-star"></i>
     </p>
   );
@@ -15,8 +15,8 @@ const ReposListItem = ({ repo }) => {
   return (
     <li>
       <div className="flex">
-        <strong id="repo-name">{repo.name}</strong>
-        {renderStarsCount(repo.watchers)}
+        <strong>{repo.name}</strong>
+        <StarsCount stars={repo.watchers} />
       </div>
       <p>{repo.description}</p>
     </li>
@@ -25,7 +25,7 @@ const ReposListItem = ({ repo }) => {
 const ReposList = ({ repos, username }) => {
   return (
     <>
-      {isEmpty(repos[username]) && noReposMessage()}
+      {isEmpty(repos[username]) && <NoReposMessage />}
       <ul className={`repos-list`}>
         {repos[username].map((repo) => (
           <ReposListItem key={repo.id} repo={repo} />

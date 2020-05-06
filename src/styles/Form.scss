@@ -1,21 +1,21 @@
-input {
+input[type="text"] {
   width: 100%;
   font-size: 1rem;
   background-color: $lightgrey;
-  border: 1px solid $border;
+  border: 2px solid $grey-border;
   padding: 0.5em;
+  margin: 1em 0;
   &:focus {
     outline-offset: 0;
   }
 }
 .btn {
   color: $lightgrey;
-  border: none;
   font-size: 0.9em;
   padding: 0.75em;
-  margin: 1em 0;
   &#search-btn {
     background-color: $blue;
+    border: 2px solid $blue-border;
     width: 100%;
   }
 }

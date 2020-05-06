@@ -3,9 +3,6 @@
 @import "List";
 @media (prefers-reduced-motion: no-preference) {
 }
-html {
-  font-size: 17px;
-}
 #app-wrapper {
   color: black;
   background-color: white;
@@ -15,13 +12,13 @@ html {
   align-items: center;
   justify-content: flex-start;
   font-size: calc(10px + 2vmin);
-  font-size: 17px;
+  font-size: 16px;
+  padding: 0 1em;
 }
 #container {
-  margin-top: 20px;
   height: 85vh;
-  width: 90vw;
-  @media (orientation: landscape) {
-    width: 400px;
+  width: 100%;
+  @media (min-width: 480px) {
+    width: calc(480px - 1em);
   }
 }
