@@ -1,20 +1,19 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { setUsers, setQuery } from "actions";
-import { fetchUsers } from "helpers/fetchUsers";
+import { fetchUsersRepos } from "helpers/fetchUsers";
 
-const SearchForm = ({ setQuery, fetchUsers }) => {
+const SearchForm = ({ setQuery, fetchUsersRepos }) => {
   const [value, setValue] = useState("");
   const handleChange = (e) => setValue(e.target.value);
   const handleSubmit = (e) => {
     setQuery(value);
-    fetchUsers(value);
+    fetchUsersRepos(value);
     e.preventDefault();
   };
 
   return (
     <>
-      {/* <div>{props.users}</div> */}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -32,8 +31,6 @@ const SearchForm = ({ setQuery, fetchUsers }) => {
   );
 };
 const mapStateToProps = (state) => ({ users: state.users });
-const mapDispatchToProps = { setUsers, setQuery, fetchUsers };
-// const mapDispatchToProps = (dispatch) => ({
-//   setUsers: (value) => dispatch(setUsers(value)),
-// });
+const mapDispatchToProps = { setUsers, setQuery, fetchUsersRepos };
+
 export default connect(mapStateToProps, mapDispatchToProps)(SearchForm);

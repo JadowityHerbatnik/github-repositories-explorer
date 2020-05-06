@@ -1,9 +1,19 @@
 input {
   width: 100%;
+  font-size: 1rem;
+  background-color: $lightgrey;
+  border: 1px solid $border;
+  padding: 0.5em;
+  &:focus {
+    outline-offset: 0;
+  }
 }
 .btn {
-  color: white;
+  color: $lightgrey;
   border: none;
+  font-size: 0.9em;
+  padding: 0.75em;
+  margin: 1em 0;
   &#search-btn {
     background-color: $blue;
     width: 100%;
