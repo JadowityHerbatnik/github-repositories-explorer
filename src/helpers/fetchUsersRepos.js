@@ -1,6 +1,5 @@
 import { fetchUserRepos, fetchUsersByName } from "helpers/requests";
-//prettier-ignore
-import { setUsers, setRepos, fetchError, fetchInProgress, fetchSuccess, } from "actions";
+import { setUsers, setRepos, fetchError, fetchInProgress, fetchSuccess } from "actions";
 
 const getUsersNames = (usersList) => {
   return usersList.map((item) => {

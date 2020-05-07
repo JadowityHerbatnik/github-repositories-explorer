@@ -9,3 +9,4 @@ export const ErrorMessage = () => <h3>Something went wrong :(</h3>;
 export const InfoMessage = ({ query }) => (
   <h3 className="info-message">Showing users for "{query}"</h3>
 );
+export const NoUsersMessage = () => <h3>No users found :(</h3>;

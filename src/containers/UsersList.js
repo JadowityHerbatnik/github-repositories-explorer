@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { usersType } from "types";
 import { connect } from "react-redux";
 import ReposList from "containers/ReposList";
 
@@ -29,4 +30,8 @@ const UsersListItem = ({ user }) => {
 const mapStateToProps = (state) => ({
   users: state.users,
 });
+
+UsersList.propTypes = {
+  users: usersType,
+};
 export default connect(mapStateToProps)(UsersList);

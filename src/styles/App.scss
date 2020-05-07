@@ -1,19 +1,14 @@
 @import "colors";
 @import "Form";
 @import "List";
+@import "generic";
 
 #app-wrapper {
   color: black;
   background-color: white;
   min-height: 85vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  font-size: calc(10px + 2vmin);
-  font-size: 16px;
-}
-#container {
+  margin: auto;
+  font-size: 15px;
   width: calc(100vw - 1em);
   @media (min-width: 480px) {
     width: calc(480px - 1em);
