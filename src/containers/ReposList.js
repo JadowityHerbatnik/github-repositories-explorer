@@ -19,7 +19,7 @@ const ReposList = ({ repos, username }) => {
 
 const ReposListItem = ({ repo }) => {
   return (
-    <li>
+    <li data-testid="repo-list-item">
       <div className="flex">
         <strong>{repo.name}</strong>
         <StarsCount stars={repo.watchers} />
