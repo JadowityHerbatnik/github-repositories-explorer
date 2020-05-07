@@ -18,7 +18,7 @@ const initialStore = {
 const store = mockStore(initialStore);
 
 describe("Respository list ", () => {
-  it("Find given user's repositories in list and displays all of them", () => {
+  it("Finds given user's repositories and displays them", () => {
     const username = "Kalosze";
     const { getAllByTestId } = render(<ReposList username={username} store={store} />);
     expect(getAllByTestId("repo-list-item").length).toEqual(
