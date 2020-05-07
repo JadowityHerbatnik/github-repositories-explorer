@@ -1,27 +1,9 @@
 import React from "react";
+import { reposType, usernameType } from "types";
 import { isEmpty } from "lodash";
 import { connect } from "react-redux";
 import { NoReposMessage } from "utils/messages";
 
-const StarsCount = ({ stars }) => {
-  return (
-    <p>
-      <strong>{stars}</strong>
-      <i className="icon-star"></i>
-    </p>
-  );
-};
-const ReposListItem = ({ repo }) => {
-  return (
-    <li>
-      <div className="flex">
-        <strong>{repo.name}</strong>
-        <StarsCount stars={repo.watchers} />
-      </div>
-      <p>{repo.description}</p>
-    </li>
-  );
-};
 const ReposList = ({ repos, username }) => {
   return (
     <>
@@ -35,5 +17,32 @@ const ReposList = ({ repos, username }) => {
   );
 };
 
+const ReposListItem = ({ repo }) => {
+  return (
+    <li>
+      <div className="flex">
+        <strong>{repo.name}</strong>
+        <StarsCount stars={repo.watchers} />
+      </div>
+      <p>{repo.description}</p>
+    </li>
+  );
+};
+
+const StarsCount = ({ stars }) => {
+  return (
+    <p>
+      <strong>{stars}</strong>
+      <i className="icon-star"></i>
+    </p>
+  );
+};
+
 const mapStateToProps = (state) => ({ repos: state.repos });
+
+ReposList.propTypes = {
+  repos: reposType,
+  username: usernameType,
+};
+
 export default connect(mapStateToProps)(ReposList);

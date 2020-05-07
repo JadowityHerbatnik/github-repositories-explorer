@@ -1,6 +1,17 @@
 import React, { useState } from "react";
+import { usersType } from "types";
 import { connect } from "react-redux";
-import ReposList from "components/ReposList";
+import ReposList from "containers/ReposList";
+
+const UsersList = ({ users }) => {
+  return (
+    <ul className="users-list">
+      {users.map((user) => (
+        <UsersListItem key={user.id} user={user} />
+      ))}
+    </ul>
+  );
+};
 
 const UsersListItem = ({ user }) => {
   const [showRepos, setShowRepos] = useState(false);
@@ -16,17 +27,11 @@ const UsersListItem = ({ user }) => {
     </li>
   );
 };
-const UsersList = ({ users }) => {
-  return (
-    <ul className="users-list">
-      {users.map((user) => (
-        <UsersListItem key={user.id} user={user} />
-      ))}
-    </ul>
-  );
-};
-
 const mapStateToProps = (state) => ({
   users: state.users,
 });
+
+UsersList.propTypes = {
+  users: usersType,
+};
 export default connect(mapStateToProps)(UsersList);

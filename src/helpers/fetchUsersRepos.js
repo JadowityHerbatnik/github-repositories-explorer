@@ -1,20 +1,5 @@
-import { ApiEndpoint } from "utils/constants";
-//prettier-ignore
-import { setUsers, setRepos, fetchError, fetchInProgress, fetchSuccess, } from "actions";
-import axios from "axios";
-// const url = "https://cat-fact.herokuapp.com/facts";
-
-const fetchUserRepos = async (username) => {
-  const url = `${ApiEndpoint}/users/${username}/repos`;
-  const response = await axios.get(url);
-  return response.data;
-};
-
-const fetchUsersData = async (username) => {
-  const url = `${ApiEndpoint}/search/users?q=${username}&per_page=5`;
-  const response = await axios.get(url);
-  return response.data.items;
-};
+import { fetchUserRepos, fetchUsersByName } from "helpers/requests";
+import { setUsers, setRepos, fetchError, fetchInProgress, fetchSuccess } from "actions";
 
 const getUsersNames = (usersList) => {
   return usersList.map((item) => {
@@ -45,7 +30,7 @@ const getUsersRepos = async (usernames) => {
 export const fetchUsersRepos = (query) => async (dispatch) => {
   try {
     dispatch(fetchInProgress());
-    const usersData = await fetchUsersData(query);
+    const usersData = await fetchUsersByName(query);
     const usernames = getUsersNames(usersData);
     const usersRepos = await getUsersRepos(usernames);
 

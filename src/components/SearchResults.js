@@ -1,24 +1,26 @@
 import React from "react";
-import { connect } from "react-redux";
-import UsersList from "components/UsersList";
-import { ErrorMessage, LoadingMessage, InfoMessage } from "utils/messages";
+import { fetchStatusType, queryType, usersType, childrenType } from "types";
+//prettier-ignore
+import { ErrorMessage, LoadingMessage, InfoMessage, NoUsersMessage } from "utils/messages";
 
-const SearchResults = ({ status, query }) => {
+const SearchResults = ({ fetchStatus, query, users, children }) => {
   return (
     <>
-      {status.loading && <LoadingMessage />}
-      {status.error && <ErrorMessage />}
-      {status.success && (
+      {fetchStatus.loading && <LoadingMessage />}
+      {fetchStatus.error && <ErrorMessage />}
+      {fetchStatus.success && (
         <>
-          <InfoMessage query={query} />
-          <UsersList />
+          {!users.length ? <NoUsersMessage /> : <InfoMessage query={query} />}
+          {children}
         </>
       )}
     </>
   );
 };
-const mapStateToProps = (state) => ({
-  status: state.status,
-  query: state.query,
-});
-export default connect(mapStateToProps)(SearchResults);
+SearchResults.propTyes = {
+  fetchStatus: fetchStatusType,
+  query: queryType,
+  users: usersType,
+  children: childrenType,
+};
+export default SearchResults;

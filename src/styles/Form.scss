@@ -13,7 +13,7 @@ input[type="text"] {
   color: $lightgrey;
   font-size: 0.9em;
   padding: 0.75em;
-  &#search-btn {
+  &.search-btn {
     background-color: $blue;
     border: 2px solid $blue-border;
     width: 100%;

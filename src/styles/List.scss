@@ -24,11 +24,6 @@ ul.repos-list {
     background-color: $darkgrey;
   }
 }
-.flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 i.icon-down-open {
   transition: transform 0.3s;
   &.rotated {

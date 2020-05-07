@@ -1,36 +1,36 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
-import { setUsers, setQuery } from "actions";
-import { fetchUsersRepos } from "helpers/fetchUsers";
+import { setQueryType, fetchDataType, placeholderType, inputIdType } from "types";
+import { defaultPlaceholder, searchBtnText } from "utils/constants";
 
-const SearchForm = ({ setQuery, fetchUsersRepos }) => {
+const SearchForm = ({ setQuery, fetchData, id, placeholder = defaultPlaceholder }) => {
   const [value, setValue] = useState("");
   const handleChange = (e) => setValue(e.target.value);
   const handleSubmit = (e) => {
     setQuery(value);
-    fetchUsersRepos(value);
+    fetchData(value);
     e.preventDefault();
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="user"
-          id="user"
-          value={value}
-          onChange={handleChange}
-          placeholder="Enter user name"
-        />
-        <button onClick={handleSubmit} className="btn" id="search-btn">
-          Search
-        </button>
-      </form>
-    </>
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        id={id}
+        value={value}
+        onChange={handleChange}
+        placeholder={placeholder}
+      />
+      <button onClick={handleSubmit} className="btn search-btn">
+        {searchBtnText}
+      </button>
+    </form>
   );
 };
-const mapStateToProps = (state) => ({ users: state.users });
-const mapDispatchToProps = { setUsers, setQuery, fetchUsersRepos };
+SearchForm.propTypes = {
+  setQuery: setQueryType.isRequired,
+  fetchData: fetchDataType.isRequired,
+  id: inputIdType,
+  placeholder: placeholderType,
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchForm);
+export default SearchForm;
