@@ -19,20 +19,20 @@ const ReposList = ({ repos, username }) => {
 
 const ReposListItem = ({ repo }) => {
   return (
-    <li data-testid="repo-list-item">
+    <li data-testid="repos-list-item">
       <div className="flex">
         <strong>{repo.name}</strong>
-        <StarsCount stars={repo.watchers} />
+        <StarsCount starsCount={repo.watchers} />
       </div>
       <p>{repo.description}</p>
     </li>
   );
 };
 
-const StarsCount = ({ stars }) => {
+const StarsCount = ({ starsCount }) => {
   return (
     <p>
-      <strong>{stars}</strong>
+      <strong>{starsCount}</strong>
       <i className="icon-star"></i>
     </p>
   );

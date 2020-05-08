@@ -7,13 +7,11 @@ import { fetchUsersRepos } from "helpers/fetchUsersRepos";
 import SearchForm from "components/SearchForm";
 import SearchResults from "components/SearchResults";
 import UsersList from "containers/UsersList";
-import "styles/App.scss";
-import "styles/fontello/css/fontello.css";
 
 function App({ fetchStatus, query, users, setQuery, fetchUsersRepos }) {
   return (
     <div id="app-wrapper">
-      <SearchForm setQuery={setQuery} id="user" fetchData={fetchUsersRepos} />
+      <SearchForm setQuery={setQuery} id="username" fetchData={fetchUsersRepos} />
       <SearchResults users={users} fetchStatus={fetchStatus} query={query}>
         <UsersList />
       </SearchResults>

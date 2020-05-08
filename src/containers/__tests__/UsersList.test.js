@@ -15,6 +15,6 @@ const store = mockStore(initialStore);
 describe("Users List", () => {
   it("renders list item for every user", () => {
     const { getAllByTestId } = render(<UsersList store={store} />);
-    expect(getAllByTestId("userslist-item").length).toEqual(initialStore.users.length);
+    expect(getAllByTestId("users-list-item").length).toEqual(initialStore.users.length);
   });
 });
