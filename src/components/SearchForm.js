@@ -19,6 +19,7 @@ const SearchForm = ({ setQuery, fetchData, id, placeholder = defaultPlaceholder 
         value={value}
         onChange={handleChange}
         placeholder={placeholder}
+        aria-label={`${id} input`}
       />
       <button onClick={handleSubmit} className="btn search-btn">
         {searchBtnText}
