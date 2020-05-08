@@ -21,7 +21,7 @@ describe("Respository list ", () => {
   it("Finds given user's repositories and displays them", () => {
     const username = "Kalosze";
     const { getAllByTestId } = render(<ReposList username={username} store={store} />);
-    expect(getAllByTestId("repo-list-item").length).toEqual(
+    expect(getAllByTestId("repos-list-item").length).toEqual(
       initialStore.repos[username].length
     );
   });

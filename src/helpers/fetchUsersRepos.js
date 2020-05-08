@@ -22,9 +22,11 @@ const getUsersRepos = async (usernames) => {
       return { username: username.name, repos: reposInfo };
     })
   );
+
   const usersRepos = reposList.reduce((obj, item) => {
     return { ...obj, [item.username]: item.repos };
   }, {});
+
   return usersRepos;
 };
 export const fetchUsersRepos = (query) => async (dispatch) => {

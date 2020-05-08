@@ -5,7 +5,7 @@ import ReposList from "containers/ReposList";
 
 const UsersList = ({ users }) => {
   return (
-    <ul data-testid="userslist" className="users-list">
+    <ul data-testid="users-list" className="users-list">
       {users.map((user) => (
         <UsersListItem key={user.id} user={user} />
       ))}
@@ -18,7 +18,7 @@ const UsersListItem = ({ user }) => {
   const toggleRepos = () => setShowRepos((prev) => !prev);
 
   return (
-    <li data-testid="userslist-item" onClick={toggleRepos}>
+    <li data-testid="users-list-item" onClick={toggleRepos}>
       <div className="flex top-bar">
         <h3>{user.name}</h3>
         <i className={`icon-down-open ${showRepos ? "rotated" : ""}`}></i>
