@@ -6,9 +6,9 @@ const SearchForm = ({ setQuery, fetchData, id, placeholder = defaultPlaceholder 
   const [value, setValue] = useState("");
   const handleChange = (e) => setValue(e.target.value);
   const handleSubmit = (e) => {
-    setQuery(value);
-    fetchData(value);
     e.preventDefault();
+    setQuery(value);
+    value && fetchData(value);
   };
 
   return (
