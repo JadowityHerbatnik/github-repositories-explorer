@@ -4,12 +4,12 @@ import { isEmpty } from "lodash";
 import { connect } from "react-redux";
 import { NoReposMessage } from "utils/messages";
 
-const ReposList = ({ repos, username }) => {
+const ReposList = ({ userRepos }) => {
   return (
     <>
-      {isEmpty(repos[username]) && <NoReposMessage />}
+      {isEmpty(userRepos) && <NoReposMessage />}
       <ul className={`repos-list`}>
-        {repos[username].map((repo) => (
+        {userRepos.map((repo) => (
           <ReposListItem key={repo.id} repo={repo} />
         ))}
       </ul>
@@ -38,7 +38,7 @@ const StarsCount = ({ starsCount }) => {
   );
 };
 
-const mapStateToProps = (state) => ({ repos: state.repos });
+const mapStateToProps = (state, own) => ({ userRepos: state.repos[own.username] });
 
 ReposList.propTypes = {
   repos: reposType,
