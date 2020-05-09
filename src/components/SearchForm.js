@@ -7,7 +7,7 @@ const SearchForm = ({ setQuery, fetchData, id, placeholder = defaultPlaceholder 
   const handleChange = (e) => setValue(e.target.value);
   const handleSubmit = (e) => {
     e.preventDefault();
-    setQuery(value);
+    value && setQuery(value);
     value && fetchData(value);
   };
 
