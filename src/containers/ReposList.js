@@ -1,4 +1,5 @@
 import React from "react";
+import { createSelector } from "reselect";
 import { reposType, usernameType } from "types";
 import { isEmpty } from "lodash";
 import { connect } from "react-redux";
@@ -38,7 +39,10 @@ const StarsCount = ({ starsCount }) => {
   );
 };
 
-const mapStateToProps = (state, own) => ({ userRepos: state.repos[own.username] });
+const selectUserRepos = (state, own) => state.repos[own.username];
+const getUserRepos = createSelector([selectUserRepos], (userRepos) => userRepos);
+
+const mapStateToProps = (state, own) => ({ userRepos: getUserRepos(state, own) });
 
 ReposList.propTypes = {
   repos: reposType,

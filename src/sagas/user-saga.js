@@ -1,4 +1,6 @@
-import { fetchUserRepos, fetchUsersByName } from "helpers/requests";
+import { call, put, takeLatest } from "redux-saga/effects";
+import { REQUEST_USERS_REPOS } from "actions/types";
+import { fetchUserRepos, fetchUsersByName } from "services/github";
 import { setUsers, setRepos, fetchError, fetchInProgress, fetchSuccess } from "actions";
 
 const getUsersNames = (usersList) => {
@@ -29,18 +31,25 @@ const getUsersRepos = async (usernames) => {
 
   return usersRepos;
 };
-export const fetchUsersRepos = (query) => async (dispatch) => {
-  try {
-    dispatch(fetchInProgress());
-    const usersData = await fetchUsersByName(query);
-    const usernames = getUsersNames(usersData);
-    const usersRepos = await getUsersRepos(usernames);
 
-    dispatch(setUsers(usernames));
-    dispatch(setRepos(usersRepos));
-    dispatch(fetchSuccess());
-  } catch (err) {
-    dispatch(fetchError());
-    console.log(Error(err));
+function* fetchUsersRepos(action) {
+  const { query } = action;
+  try {
+    yield put(fetchInProgress());
+
+    const usersData = yield call(fetchUsersByName, query);
+    const usernames = getUsersNames(usersData);
+    const usersRepos = yield call(getUsersRepos, usernames);
+
+    yield put(setUsers(usernames));
+    yield put(setRepos(usersRepos));
+
+    yield put(fetchSuccess());
+  } catch (e) {
+    yield put(fetchError());
   }
-};
+}
+
+export function* userSaga() {
+  yield takeLatest(REQUEST_USERS_REPOS, fetchUsersRepos);
+}

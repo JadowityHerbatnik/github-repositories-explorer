@@ -1,5 +1,5 @@
 //prettier-ignore
-import { SET_USERS, SET_QUERY, SET_REPOS, FETCH_ERROR, FETCH_SUCCESS, FETCH_IN_PROGRESS } from "actions/types";
+import { SET_USERS, SET_QUERY, SET_REPOS, FETCH_ERROR, FETCH_SUCCESS, FETCH_IN_PROGRESS, REQUEST_USERS_REPOS } from "actions/types";
 
 export const setUsers = (users) => ({
   type: SET_USERS,
@@ -26,4 +26,9 @@ export const fetchSuccess = () => ({
 
 export const fetchInProgress = () => ({
   type: FETCH_IN_PROGRESS,
+});
+
+export const requestUsersRepos = (query) => ({
+  type: REQUEST_USERS_REPOS,
+  query,
 });
