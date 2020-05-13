@@ -1,10 +1,12 @@
 import React from "react";
 import configureMockStore from "redux-mock-store";
 import { render } from "@testing-library/react";
-import thunk from "redux-thunk";
+import createSagaMiddleware from "redux-saga";
+import rootSaga from "sagas/";
 import UsersList from "../UsersList";
 
-const mockStore = configureMockStore([thunk]);
+const sagaMiddleware = createSagaMiddleware();
+const mockStore = configureMockStore([sagaMiddleware]);
 const initialStore = {
   users: [
     { name: "Random", id: 1 },
@@ -12,6 +14,8 @@ const initialStore = {
   ],
 };
 const store = mockStore(initialStore);
+sagaMiddleware.run(rootSaga);
+
 describe("Users List", () => {
   it("renders list item for every user", () => {
     const { getAllByTestId } = render(<UsersList store={store} />);

@@ -1,10 +1,12 @@
 import React from "react";
 import configureMockStore from "redux-mock-store";
 import { render } from "@testing-library/react";
-import thunk from "redux-thunk";
+import createSagaMiddleware from "redux-saga";
+import rootSaga from "sagas/";
 import ReposList from "../ReposList";
 
-const mockStore = configureMockStore([thunk]);
+const sagaMiddleware = createSagaMiddleware();
+const mockStore = configureMockStore([sagaMiddleware]);
 const initialStore = {
   users: [
     { name: "Dziurawe", id: 1 },
@@ -16,6 +18,7 @@ const initialStore = {
   },
 };
 const store = mockStore(initialStore);
+sagaMiddleware.run(rootSaga);
 
 describe("Respository list ", () => {
   it("Finds given user's repositories and displays them", () => {
