@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { setQueryType, fetchDataType, placeholderType, inputIdType } from "types";
-import { defaultPlaceholder, searchBtnText } from "utils/constants";
+import { setQueryType, fetchDataType, inputIdType } from "types";
+import { SearchButton } from "components/SearchButton";
+import { TextInput } from "components/TextInput";
 
-const SearchForm = ({ setQuery, fetchData, id, placeholder = defaultPlaceholder }) => {
+const SearchForm = ({ setQuery, fetchData, id }) => {
   const [value, setValue] = useState("");
   const handleChange = (e) => setValue(e.target.value);
   const handleSubmit = (e) => {
@@ -13,17 +14,8 @@ const SearchForm = ({ setQuery, fetchData, id, placeholder = defaultPlaceholder 
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        id={id}
-        value={value}
-        onChange={handleChange}
-        placeholder={placeholder}
-        aria-label={`${id} input`}
-      />
-      <button onClick={handleSubmit} className="btn search-btn">
-        {searchBtnText}
-      </button>
+      <TextInput id={id} value={value} handleChange={handleChange} />
+      <SearchButton onClick={handleSubmit} />
     </form>
   );
 };
@@ -31,7 +23,6 @@ SearchForm.propTypes = {
   setQuery: setQueryType.isRequired,
   fetchData: fetchDataType.isRequired,
   id: inputIdType,
-  placeholder: placeholderType,
 };
 
 export default SearchForm;
