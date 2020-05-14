@@ -23,3 +23,6 @@ export const fetchStatusType = objectOf(bool);
 
 export const placeholderType = string;
 export const inputIdType = string;
+export const inputValueType = string;
+export const handleChangeType = func;
+export const onClickType = func;
